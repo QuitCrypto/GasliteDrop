@@ -12,6 +12,7 @@ import Bytecode20 from "../../contracts/out/Bytecode20.sol/Bytecode20.json";
 import { useRouter } from "next/router";
 import { blast } from "@/lib/chains/blast";
 import { degen } from "@/lib/chains/degen";
+import { apechain } from "@/lib/chains/apechain";
 
 const deriveExternalLink = (txHash, chainId) => {
   switch (chainId) {
@@ -35,6 +36,8 @@ const deriveExternalLink = (txHash, chainId) => {
       return `https://blastscan.io/tx/${txHash}`;
     case degen.id:
       return `https://explorer.degen.tips/tx/${txHash}`;
+    case apechain.id:
+      return `https://apescan.io/tx/${txHash}`;
     default:
       return `https://etherscan.io/tx/${txHash}`;
   }

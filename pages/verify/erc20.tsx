@@ -15,53 +15,27 @@ import { mainnet, arbitrum, base, optimism, polygon, sepolia, bsc, zora } from "
 import { baseSepolia } from "viem/chains";
 import { blast } from "@/lib/chains/blast";
 import { degen } from "@/lib/chains/degen";
+import { apechain } from "@/lib/chains/apechain";
 
-const publicClients = [
-  createPublicClient({
-    chain: mainnet,
-    transport: http(),
-  }),
-  createPublicClient({
-    chain: sepolia,
-    transport: http(),
-  }),
-  createPublicClient({
-    chain: arbitrum,
-    transport: http(),
-  }),
-  createPublicClient({
-    chain: base,
-    transport: http(),
-  }),
-  createPublicClient({
-    chain: optimism,
-    transport: http(),
-  }),
-  createPublicClient({
-    chain: polygon,
-    transport: http(),
-  }),
-  createPublicClient({
-    chain: bsc,
-    transport: http(),
-  }),
-  createPublicClient({
-    chain: zora,
-    transport: http(),
-  }),
-  createPublicClient({
-    chain: baseSepolia,
-    transport: http(),
-  }),
-  createPublicClient({
-    chain: blast,
-    transport: http(),
-  }),
-  createPublicClient({
-    chain: degen,
-    transport: http(),
-  }),
+const chains = [
+  mainnet,
+  sepolia,
+  arbitrum,
+  base,
+  optimism,
+  polygon,
+  bsc,
+  zora,
+  baseSepolia,
+  blast,
+  degen,
+  apechain,
 ];
+
+const publicClients = chains.map(chain => createPublicClient({
+  chain,
+  transport: http(),
+}));
 
 const useFetchByteCode = ({ contractAddress }) => {
   const [isProcessing, setIsProcessing] = useState(false);

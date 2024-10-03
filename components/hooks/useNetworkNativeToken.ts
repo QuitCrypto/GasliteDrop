@@ -31,6 +31,9 @@ function useNetworkNativeToken() {
       case "Degen":
         return "DEGEN";
 
+      case "Apechain":
+        return "APECHAIN";
+
       default:
         return "ETH";
     }
